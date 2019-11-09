@@ -1,23 +1,56 @@
 from django import forms
-from .models import Local
-from .models import Distrito    
-from .models import Servicio
+from .models import Cliente, Reserva
 
-
-class DistritoForm(forms.ModelForm):
+class ClienteForm(forms.ModelForm):
     class Meta:
-        model = Distrito
-        fields = ['nombre', "ubigeo", "fecha_creacion" ]
-        
+        model = Cliente
+        fields = ['nombre', 'apellidos', 'dni']
+        labels = {
+            'nombre': 'Nombre del Cliente',
+            'apellidos': 'Apellidos del Cliente',
+            'dni': 'Dni del Cliente'
+        }
+        widgets = {
+            'nombre': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingresa el nombre del Cliente',
+                    'id': 'nombre'
+                }
+            ),
+            'apellidos': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingresa los apellidos del Cliente',
+                    'id': 'apellidos'
+                }
+            ),
+            'dni': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingresa la dni del Cliente',
+                    'id': 'dni'
+                }
+            )
+        }
 
-class LocalForm(forms.ModelForm):
+class ReservaForm(forms.ModelForm):
     class Meta:
-        model = Local
-        fields = ['nombre', "direccion", "distrito_id", "fecha_creacion" ]
-    
+        model = Reserva
+        fields = ['cliente_id','pelicula_id', 'fecha', 'cantidad', 'sala_id']
+        labels = {
+            'cliente_id': 'Nombre del Cliente'
+            'pelicula_id': 'Nombre de la Película',
+            'fecha': 'Fecha de la Función',
+            'cantidad': 'cantidad de asientos',
+            'sala_id': 'Sala'
+        }
 
-class ServicioForm(forms.ModelForm):
-    class Meta:
-        model = Servicio
-        fields = ['nombre', "local_id" "fecha_creacion" ]
-        
+        widgets = {
+            'idcliente' : forms.Select(attrs={'class':'form-control'}),
+            'idpelicula' : forms.Select(attrs={'class':'form-control'}),
+            'fecha' : forms.TextInput(attrs={'class':'form-control'}),
+            'cantidad' : forms.TextInput(attrs={'class':'form-control'}),
+            'sala_id' : forms.Select(attrs={'class':'form-control'})
+        }
+
