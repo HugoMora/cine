@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Crear compra
+{% endblock %}
+
+{% block content %}
+    <form method="POST" action= crear_compra.html enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ compra_form.as_p }}
+        
+        <button class="btn btn-primary" type="submit">Crear</button>
+    </form>
+{% endblock %}
