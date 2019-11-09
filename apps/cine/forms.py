@@ -53,3 +53,4 @@ class ReservaForm(forms.ModelForm):
             'cantidad' : forms.TextInput(attrs={'class':'form-control'}),
             'sala_id' : forms.Select(attrs={'class':'form-control'})
         }
+

@@ -5,8 +5,19 @@ from .models import Cliente, Reserva
 from django.views.generic import TemplateView, ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
-# Create your views here.
 
+from django.shortcuts import render, redirect
+from django.views.decorators.http import require_http_methods
+from django.shortcuts import render, redirect, get_object_or_404
+from django.forms import ModelForm
+
+
+from .forms import CompraForm
+from .models import Compra
+
+from django.http import HttpResponse
+
+# Create your views here.
 class Home(TemplateView):
     template_name = 'index.html'
 
@@ -73,3 +84,6 @@ class EliminarReserva(DeleteView):
         context = super(EliminarReserva, self).get_context_data(*args, **kwargs)
         context['reserva'] = reserva
         return context
+
+
+
