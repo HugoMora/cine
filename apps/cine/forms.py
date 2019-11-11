@@ -1,5 +1,16 @@
+
 from django import forms
-from .models import Cliente, Reserva
+from .models import Cliente
+from .models import Reserva
+from .models import Distrito
+from .models import Actor
+from .models import Local
+from .models import Servicio
+from .models import Categoria
+from .models import Genero
+from .models import Horario
+from .models import Pelicula
+from .models import Sala
 
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -64,13 +75,13 @@ class DistritoForm(forms.ModelForm):
         }
         widgets = {
             'nombre' : forms.TextInput(attrs={'class':'form-control'}),
-            'ubigeo' : forms.TextInput(attrs={'class':'form-control'}),
+            'ubigeo' : forms.TextInput(attrs={'class':'form-control'})
             'fecha_creacion' : forms.DateTimeInput(attrs={'class':'form-control'})
         }
 
 class LocalForm(forms.ModelForm):
     class Meta:
-        m odel = Local
+        model = Local
         fields = ['nombre', 'direccion', 'distrito_id', 'fecha_creacion']
         labels = {
             'nombre': 'Local',
@@ -189,12 +200,12 @@ class PeliculaForm(forms.ModelForm):
         widgets = {
             'titulo' : forms.TextInput(attrs={'class':'form-control'}),
             'trailer' : forms.TextInput(attrs={'class':'form-control'}),
-            'genero' : forms.Select(attrs={'class':'form-control'})
-            'categoria' : forms.Select(attrs={'class':'form-control'})
-            'actor' : forms.Select(attrs={'class':'form-control'})
-            'duracion' : forms.TextInput(attrs={'class':'form-control'})
-            'imagen' : forms.ImageInput(attrs={'class':'form-control'})
-            'idioma' : forms.TextInput(attrs={'class':'form-control'})
+            'genero' : forms.Select(attrs={'class':'form-control'}),
+            'categoria' : forms.Select(attrs={'class':'form-control'}),
+            'actor' : forms.Select(attrs={'class':'form-control'}),
+            'duracion' : forms.TextInput(attrs={'class':'form-control'}),
+            'imagen' : forms.ImageInput(attrs={'class':'form-control'}),
+            'idioma' : forms.TextInput(attrs={'class':'form-control'}),
             'fecha_creacion' : forms.DateTimeInput(attrs={'class':'form-control'})
         }
 

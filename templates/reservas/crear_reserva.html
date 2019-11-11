@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Crear compra
+    Crear reserva
 {% endblock %}
 
 {% block content %}
-    <form method="POST" action= crear_compra.html enctype="multipart/form-data">
+    <form method="POST" action= crear_reserva.html enctype="multipart/form-data">
         {% csrf_token %}
         {{ compra_form.as_p }}
         
